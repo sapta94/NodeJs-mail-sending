@@ -1,0 +1,24 @@
+{
+  "name": "nodsjs-email",
+  "version": "1.0.0",
+  "description": "Email sender using node JS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sapta94/NodeJs-mail-sending.git"
+  },
+  "author": "SapD",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sapta94/NodeJs-mail-sending/issues"
+  },
+  "homepage": "https://github.com/sapta94/NodeJs-mail-sending#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "nodemailer": "^4.0.1"
+  }
+}
