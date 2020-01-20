@@ -19,6 +19,8 @@ router.post('/sendMail',function(req,res){
     var sender = req.body.sender;
     var mobile = req.body.mobile;
 
+    console.log(process.env.userName,' ',process.env.password)
+
     let transporter = mailer.createTransport({
     host: 'smtp.rediffmail.com', //your mails smtp
     port: 465,
@@ -28,6 +30,8 @@ router.post('/sendMail',function(req,res){
         pass: process.env.password
         }
     });
+
+    
 
     let mailOptions = {
         from: '"SD" <saptarshidey.2009@rediffmail.com>', // sender address
