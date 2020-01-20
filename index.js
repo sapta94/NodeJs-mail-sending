@@ -15,8 +15,6 @@ app.options('*', cors());
 
 
 router.post('/sendMail',function(req,res){
-    var userName = req.body.userName;
-    var password = req.body.password;
     var content = req.body.content;
     var sender = req.body.sender;
     var mobile = req.body.mobile;
