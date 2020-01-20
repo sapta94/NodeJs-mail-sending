@@ -19,12 +19,11 @@ router.post('/sendMail',function(req,res){
     var sender = req.body.sender;
     var mobile = req.body.mobile;
 
-    console.log(process.env.userName,' ',process.env.password)
+    console.log(process.env.userName,' ',typeof process.env.password)
 
     let transporter = mailer.createTransport({
     service: 'gmail', //your mails smtp
-    port: 465,
-    secure: true, // secure:true for port 465, secure:false for port 587
+    // secure:true for port 465, secure:false for port 587
     auth: {
         user: process.env.userName,
         pass: process.env.password
