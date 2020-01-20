@@ -22,7 +22,7 @@ router.post('/sendMail',function(req,res){
     console.log(process.env.userName,' ',process.env.password)
 
     let transporter = mailer.createTransport({
-    host: 'smtp.rediffmail.com', //your mails smtp
+    service: 'gmail', //your mails smtp
     port: 465,
     secure: true, // secure:true for port 465, secure:false for port 587
     auth: {
@@ -34,8 +34,8 @@ router.post('/sendMail',function(req,res){
     
 
     let mailOptions = {
-        from: '"SD" <saptarshidey.2009@rediffmail.com>', // sender address
-        to: 'dey7.kol@gmail.com', // list of receivers
+        from: '"SD" <dey7.kol@gmail.com>', // sender address
+        to: 'saptarshidey.2009@rediffmail.com', // list of receivers
         subject: 'Message from portfolio ', // Subject line
         text: 'From: '+sender+'\n Mobile: '+mobile+'\n'+content, // plain text body
     };
