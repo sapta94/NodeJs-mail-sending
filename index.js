@@ -4,13 +4,24 @@ var bodyParser = require('body-parser');
 var router = express.Router();
 var mailer = require('nodemailer');
 const cors = require('cors');
-
+const { google } = require("googleapis");
+const OAuth2 = google.auth.OAuth2;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 app.options('*', cors());
 
+const oauth2Client = new OAuth2(
+    process.env.clientID, // ClientID
+    process.env.clientSecret, // Client Secret
+    "https://developers.google.com/oauthplayground" // Redirect URL
+);
+
+oauth2Client.setCredentials({
+    refresh_token: process.env.refreshToken
+});
+const accessToken = oauth2Client.getAccessToken()
 
 
 
@@ -25,9 +36,13 @@ router.post('/sendMail',function(req,res){
     service: 'gmail', //your mails smtp
     // secure:true for port 465, secure:false for port 587
     auth: {
-        user: process.env.userName,
-        pass: process.env.password
-        }
+        type: "OAuth2",
+        user: "dey7.kol@gmail.com", 
+        clientId: process.env.clientID,
+        clientSecret: process.env.clientSecret,
+        refreshToken: process.env.refreshToken,
+        accessToken: accessToken
+   }
     });
 
     
