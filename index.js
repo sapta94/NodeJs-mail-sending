@@ -6,6 +6,7 @@ var mailer = require('nodemailer');
 const cors = require('cors');
 const { google } = require("googleapis");
 const OAuth2 = google.auth.OAuth2;
+const Nexmo = require('nexmo');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -21,7 +22,7 @@ const oauth2Client = new OAuth2(
 oauth2Client.setCredentials({
     refresh_token: process.env.refreshToken
 });
-const accessToken = oauth2Client.getAccessToken()
+//const accessToken = oauth2Client.getAccessToken()
 
 
 
@@ -69,6 +70,34 @@ router.post('/sendMail',function(req,res){
 
 })
 
+router.post('/sendSms',async function(req,res){
+    const content = req.body.content;
+    const sender = req.body.sender;
+    const mobile = req.body.mobile; 
+    try{
+        const nexmo = new Nexmo({
+            apiKey: 'fd70e51d',
+            apiSecret: '2acd1076173b9e4d',
+          });
+          
+          const from = 'Portfolio';
+          const to = '918981235949';
+          const text = 'From: '+sender+'\n Mobile: '+mobile+'\n'+content
+          
+        await nexmo.message.sendSms(from, to, text);
+        return res.send({
+            message:"success",
+        })
+    }catch(err){
+        console.log(err)
+        return res.send({
+            message:"fail",
+            error:err
+        })
+    }
+    
+
+})
 
 //associate router to url path
 app.use('/api', router)
