@@ -76,8 +76,8 @@ router.post('/sendSms',async function(req,res){
     const mobile = req.body.mobile; 
     try{
         const nexmo = new Nexmo({
-            apiKey: 'fd70e51d',
-            apiSecret: '2acd1076173b9e4d',
+            apiKey: process.env.apiKey,
+            apiSecret: process.env.apiSecret,
           });
           
           const from = 'Portfolio';
