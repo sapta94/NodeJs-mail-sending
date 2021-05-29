@@ -49,8 +49,8 @@ router.post('/sendMail',function(req,res){
     
 
     let mailOptions = {
-        from: '"SD" <dey7.kol@gmail.com>', // sender address
-        to: 'saptarshidey.2009@rediffmail.com', // list of receivers
+        from: '"MP" <dey7.kol@gmail.com>', // sender address
+        to: 'missionp.india@gmail.com', // list of receivers
         subject: 'Message from portfolio ', // Subject line
         text: 'From: '+sender+'\n Mobile: '+mobile+'\n'+content, // plain text body
     };
