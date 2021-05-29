@@ -22,7 +22,7 @@ const oauth2Client = new OAuth2(
 oauth2Client.setCredentials({
     refresh_token: process.env.refreshToken
 });
-//const accessToken = oauth2Client.getAccessToken()
+const accessToken = oauth2Client.getAccessToken()
 
 
 
